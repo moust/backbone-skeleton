@@ -2,9 +2,8 @@ define([
 	'jquery',
 	'underscore',
 	'backbone',
-	'router',
-	'views'
-], function($, _, Backbone, Router, Views) {
+	'router'
+], function($, _, Backbone, Router) {
 
 	var initialize = function() {
 		if (window.cordova || window.Cordova) {
@@ -16,7 +15,6 @@ define([
 
 	var onDeviceReady = function() {
 		console.info("deviceready");
-		window.Views = Views.initialize();
 		Router = Router.initialize();
 	};
 
