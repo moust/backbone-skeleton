@@ -1,8 +1,9 @@
 define([
 	'jquery',
 	'underscore',
-	'backbone'
-], function($, _, Backbone) {
+	'backbone',
+	'views/HomeView'
+], function($, _, Backbone, HomeView) {
 
 	var Router = Backbone.Router.extend({
 
@@ -55,7 +56,7 @@ define([
 
 		defaultAction: function(actions) {
 			console.log('defaultAction', actions);
-			var view = new Views.Home();
+			var view = new HomeView();
 			this.render(view);
 		}
 
