@@ -5,18 +5,17 @@ define([
 ],
 function($, _, Backbone){
 
-	var HomeView = Backbone.View.extend({
+	var HelloView = Backbone.View.extend({
 
 		initialize: function(){},
 
 		render: function(){
-			console.log('render Home view');
-			this.$el.text('Hello world');
+			this.$el.text( $.i18n('hello world') );
 			return this;
 		}
 
 	});
 
-	return HomeView;
+	return HelloView;
 
 });

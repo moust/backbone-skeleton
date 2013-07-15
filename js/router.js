@@ -2,26 +2,21 @@ define([
 	'jquery',
 	'underscore',
 	'backbone',
-	'views/HomeView'
-], function($, _, Backbone, HomeView) {
+	'views/HelloView'
+], function($, _, Backbone, HelloView) {
 
 	var Router = Backbone.Router.extend({
 
 		routes: {
 			// Define some URL routes
+			'locale/:locale': 'localeAction',
 			// Default
 			'*actions': 'defaultAction'
 		},
 
 		render: function(view) {
-			//Close the current view
+			// close the current view
 			if (this.currentView) {
-
-				// remove touchmove event listener (added by iScroll)
-				if (this.currentView.touchmoveHandler) {
-					document.removeEventListener('touchmove', this.currentView.touchmoveHandler, false);
-				}
-
 				// same as this.$el.remove();
 				this.currentView.remove();
 				// unbind events that are set on this view
@@ -46,6 +41,7 @@ define([
 			return this;
 		},
 
+		// open external links in new tab
 		handleExternalLinks: function() {
 			$(document).on("click", 'a[href^="http://"]', function(e){
 				e.preventDefault();
@@ -56,8 +52,13 @@ define([
 
 		defaultAction: function(actions) {
 			console.log('defaultAction', actions);
-			var view = new HomeView();
+			var view = new HelloView();
 			this.render(view);
+		},
+
+		localeAction: function(locale) {
+			setLocale(locale);
+			this.navigate("/", {trigger: true, replace: true});
 		}
 
 	});
