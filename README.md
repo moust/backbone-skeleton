@@ -9,3 +9,4 @@ A skeleton used to develop new JavaScript application based on Backbone and Requ
 * Backbone
 * jQuery
 * Modernizr
+* wikimedia/jquery.i18n
